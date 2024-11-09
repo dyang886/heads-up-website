@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heads Up</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="form_submission.js"></script>
 </head>
 
 <body>
@@ -36,7 +37,7 @@
         <section class="contact-section">
             <div class="container">
                 <h2>Contact Us</h2>
-                <form action="#" method="post" class="contact-form">
+                <form id="contact-form" class="contact-form">
                     <label for="first-name">First Name</label>
                     <input type="text" id="first-name" name="first-name" required>
 
@@ -48,6 +49,7 @@
 
                     <button type="submit">Submit</button>
                 </form>
+                <p id="form-response"></p>
             </div>
         </section>
 
