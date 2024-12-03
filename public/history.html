@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heads Up - History</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="home">
+        <!-- Navbar Section -->
+        <nav class="navbar">
+            <div class="nav-header">
+                <a href="index.html">Heads Up</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="service.html" class="nav-link">Services</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="history.html" class="nav-link">History</a>
+            </div>
+        </nav>
+
+        <!-- History Header -->
+        <section class="hero-section">
+            <div class="container">
+                <h1>History</h1>
+                <p>Track your HeadsUp check history and see how you've improved over the past month.</p>
+            </div>
+        </section>
+
+        <!-- Graph Section -->
+        <section class="history-section">
+            <div class="container">
+                <canvas id="historyChart" width="800" height="400"></canvas>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="footer">
+            <div class="container">
+                <p>© 2024 Heads Up. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <!-- Chart Script -->
+        <script>
+            const ctx = document.getElementById('historyChart').getContext('2d');
+
+            // Mock data for demonstration: bad habits caught over 30 days
+            const labels = Array.from({ length: 30 }, (_, i) => `Day ${i + 1}`);
+            const data = Array.from({ length: 30 }, (_, i) => 50 - i + Math.floor(Math.random() * 5)); // Decreasing trend with some randomness
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Bad Habits Caught',
+                        data: data,
+                        borderColor: '#e57373',
+                        backgroundColor: 'rgba(229, 115, 115, 0.2)',
+                        borderWidth: 2,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            labels: {
+                                color: '#e0e0e0'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: { color: '#e0e0e0' },
+                            grid: { color: '#444' }
+                        },
+                        y: {
+                            ticks: { color: '#e0e0e0' },
+                            grid: { color: '#444' },
+                            title: {
+                                display: true,
+                                text: 'Bad Habits Caught',
+                                color: '#e0e0e0'
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
+    </div>
+</body>
+
+</html>

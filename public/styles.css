@@ -346,3 +346,18 @@ button:disabled {
     margin: 0;
     font-size: 1em;
 }
+
+/* History Section */
+.history-section {
+    padding: 40px 0;
+    background-color: #1c1c1c;
+}
+
+#historyChart {
+    max-width: 800px;
+    margin: 0 auto;
+    display: block;
+    background-color: #333;
+    border-radius: 8px;
+    padding: 20px;
+}
