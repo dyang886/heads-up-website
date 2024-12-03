@@ -321,3 +321,28 @@ button:disabled {
 .contact-form button:hover {
     background-color: #60a8a3;
 }
+
+/* FAQ Section Styles */
+.faq-section {
+    background-color: #1c1c1c;
+    padding: 40px 0;
+}
+
+.faq {
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+}
+
+.faq h2 {
+    color: #76c7c0;
+    margin-bottom: 10px;
+}
+
+.faq p {
+    color: #b0b0b0;
+    margin: 0;
+    font-size: 1em;
+}
