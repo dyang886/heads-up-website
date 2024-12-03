@@ -361,3 +361,115 @@ button:disabled {
     border-radius: 8px;
     padding: 20px;
 }
+
+
+.upgrade-recommendation {
+    background-color: #333; /* Dark background to match the site's theme */
+    padding: 40px 20px;
+    border-radius: 8px; /* Smooth edges */
+    text-align: center;
+    margin: 30px auto;
+    max-width: 600px; /* Center it with a fixed width */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+.upgrade-recommendation h2 {
+    color: #76c7c0; /* Light teal heading to grab attention */
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.upgrade-recommendation p {
+    color: #e0e0e0; /* Subtle white text for better readability */
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.upgrade-recommendation ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.upgrade-recommendation ul li {
+    color: #b0b0b0; /* Muted text color for details */
+    margin: 10px 0;
+    font-size: 0.9em;
+}
+
+.upgrade-recommendation button {
+    display: inline-block;
+    background-color: #76c7c0; /* Vibrant button color */
+    color: #121212; /* Dark text for contrast */
+    font-size: 1em;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upgrade-recommendation button:hover {
+    background-color: #60a8a3; /* Slightly darker teal for hover */
+}
+
+.recommendation-section {
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #1c1c1c; /* Dark background to match the site's theme */
+    border-radius: 8px; /* Smooth edges */
+    max-width: 800px; /* Center with fixed width */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    text-align: center;
+}
+
+.recommendation-section h2 {
+    font-size: 1.8em;
+    color: #76c7c0; /* Teal heading for emphasis */
+    margin-bottom: 20px;
+}
+
+.recommendation-section p {
+    font-size: 1em;
+    color: #e0e0e0; /* White text for readability */
+    margin-bottom: 20px;
+}
+
+.recommendation-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.recommendation-section ul li {
+    font-size: 1em;
+    color: #b0b0b0; /* Muted text color for list items */
+    margin: 10px 0;
+    text-align: left; /* Align for readability if tips are long */
+}
+
+.recommendation-section ul li::before {
+    content: '💡'; /* Lightbulb emoji for tips */
+    font-size: 1.2em;
+    margin-right: 10px;
+    color: #76c7c0; /* Same teal color as the heading */
+}
+
+.recommendation-section button {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #76c7c0; /* Teal button for a call to action */
+    color: #121212; /* Dark text for contrast */
+    font-size: 1em;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.recommendation-section button:hover {
+    background-color: #60a8a3; /* Darker teal on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
