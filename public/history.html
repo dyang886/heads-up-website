@@ -19,8 +19,8 @@
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="service.html" class="nav-link">Services</a>
-                <a href="about.html" class="nav-link">About</a>
                 <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="about.html" class="nav-link">About</a>
                 <a href="history.html" class="nav-link">History</a>
             </div>
         </nav>
@@ -39,15 +39,14 @@
                 <canvas id="historyChart" width="800" height="400"></canvas>
             </div>
         </section>
-        
+
+        <!-- Recommendation Section -->
         <section class="recommendation-section">
             <div class="container">
                 <h2>Personalized Tips</h2>
-                <p>Your most frequent issue is <strong>slouching</strong>. Try these tips:</p>
-                <ul>
-                    <li>Adjust your chair height to ensure your back stays straight.</li>
-                    <li>Use a standing desk to improve your posture while working.</li>
-                    <li>Enable hourly posture reminders in the <a href="service.html">Premium Plan</a>.</li>
+                <p id="dynamic-message">Loading tips...</p>
+                <ul id="recommendation-list">
+                    <!-- Recommendations will be dynamically loaded here -->
                 </ul>
             </div>
         </section>
@@ -62,51 +61,90 @@
         <!-- Chart Script -->
         <script>
             const ctx = document.getElementById('historyChart').getContext('2d');
+            let chart;
 
-            // Mock data for demonstration: bad habits caught over 30 days
-            const labels = Array.from({ length: 30 }, (_, i) => `Day ${i + 1}`);
-            const data = Array.from({ length: 30 }, (_, i) => 50 - i + Math.floor(Math.random() * 5)); // Decreasing trend with some randomness
-
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Bad Habits Caught',
-                        data: data,
-                        borderColor: '#e57373',
-                        backgroundColor: 'rgba(229, 115, 115, 0.2)',
-                        borderWidth: 2,
-                        tension: 0.3
-                    }]
+            // Data for two users
+            const users = {
+                user1: {
+                    history: Array.from({ length: 30 }, (_, i) => 50 - i + Math.floor(Math.random() * 5)),
+                    tips: [
+                        "Take a short walk every hour to stay active.",
+                        "Consider using an ergonomic chair to improve posture.",
+                        "Set up reminders to check your posture while working."
+                    ],
+                    issue: "slouching"
                 },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            labels: {
-                                color: '#e0e0e0'
-                            }
-                        }
+                user2: {
+                    history: Array.from({ length: 30 }, (_, i) => 40 - i + Math.floor(Math.random() * 3)),
+                    tips: [
+                        "Practice nasal breathing exercises to improve airflow.",
+                        "Use mouth tape while sleeping to encourage nasal breathing.",
+                        "Stay hydrated to avoid dry mouth."
+                    ],
+                    issue: "mouth breathing"
+                }
+            };
+
+            // Manually set the user
+            const activeUser = 'user1'; 
+
+            function loadUser(userId) {
+                const user = users[userId];
+                if (!user) return;
+
+                // Update Chart
+                const labels = Array.from({ length: 30 }, (_, i) => `Day ${i + 1}`);
+                if (chart) chart.destroy();
+                chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Bad Habits Caught',
+                            data: user.history,
+                            borderColor: '#e57373',
+                            backgroundColor: 'rgba(229, 115, 115, 0.2)',
+                            borderWidth: 2,
+                            tension: 0.3
+                        }]
                     },
-                    scales: {
-                        x: {
-                            ticks: { color: '#e0e0e0' },
-                            grid: { color: '#444' }
-                        },
-                        y: {
-                            ticks: { color: '#e0e0e0' },
-                            grid: { color: '#444' },
-                            title: {
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
                                 display: true,
-                                text: 'Bad Habits Caught',
-                                color: '#e0e0e0'
+                                labels: {
+                                    color: '#e0e0e0'
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: { color: '#e0e0e0' },
+                                grid: { color: '#444' }
+                            },
+                            y: {
+                                ticks: { color: '#e0e0e0' },
+                                grid: { color: '#444' },
+                                title: {
+                                    display: true,
+                                    text: 'Bad Habits Caught',
+                                    color: '#e0e0e0'
+                                }
                             }
                         }
                     }
-                }
-            });
+                });
+
+                // Update Recommendations
+                const messageElement = document.getElementById("dynamic-message");
+                const recommendationList = document.getElementById("recommendation-list");
+                messageElement.innerHTML = `Your most frequent issue is <strong>${user.issue}</strong>. Try these tips:`;
+                recommendationList.innerHTML = user.tips.map(tip => `<li>${tip}</li>`).join("");
+            }
+
+            // Load active user
+            loadUser(activeUser);
         </script>
     </div>
 </body>
